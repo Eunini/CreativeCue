@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
-
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -77,12 +73,12 @@
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
-.black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+.red-btn {
+  @apply rounded-full bg-red-500 py-1.5 px-5 text-white outline-none transition-all hover:bg-red-600 text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-red-500 bg-transparent py-1.5 px-5 text-red-500 transition-all hover:bg-red-600 hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .head_text {
@@ -90,7 +86,7 @@
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-rose-500 via-red-600 to-red-500 bg-clip-text text-transparent;
 }
 
 .green_gradient {
@@ -106,7 +102,7 @@
 }
 
 .search_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+  @apply block w-full rounded-md border border-gray-200 bg-white py-5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-gray-200 focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
@@ -137,7 +133,7 @@
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply max-sm:hidden font-satoshi font-semibold text-lg text-red-500 tracking-wide;
 }
 
 .dropdown {
