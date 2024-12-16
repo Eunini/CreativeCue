@@ -1,7 +1,7 @@
 <div align="center">
   <br />
-  <a href="https://youtu.be/wm5gMKuwSYk?feature=shared" target="_blank">
-    <img src="https://github.com/eunini/CreativeCue/assets/151519281/40a6e6fe-7f97-45bc-8113-bb5732fdcdb7" alt="Project Banner">
+  <a href="https://wa.me/message/TFFG2ETW5L3CH1" target="_blank">
+    <img src="https://www.canva.com/design/DAGZZy0QuxQ/I477Nk260k6c7TozRsmIkg/edit?utm_content=DAGZZy0QuxQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" alt="Project Banner">
   </a>
   <br />
 
