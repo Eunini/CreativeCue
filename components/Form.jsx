@@ -4,7 +4,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text text-left'>
-        <span className='blue_gradient'>{type} Post</span>
+        <span className='text-red-500'>{type} Post</span>
       </h1>
       <p className='desc text-left max-w-md'>
         {type} and share amazing prompts with the world, and let your
@@ -46,15 +46,15 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           />
         </label>
 
-        <div className='flex-end mx-3 mb-5 gap-4'>
-          <Link href='/' className='text-gray-500 text-sm'>
+        <div className='flex-end mx-3 gap-4'>
+          <Link href='/' className='text-gray-500 text-sm underline'>
             Cancel
           </Link>
 
           <button
             type='submit'
             disabled={submitting}
-            className='px-5 py-1.5 text-base bg-primary-red rounded-full text-white'
+            className='px-5 py-2 text-base bg-red-500 outline-0 border-0 rounded-md text-white'
           >
             {submitting ? `${type}ing...` : type}
           </button>

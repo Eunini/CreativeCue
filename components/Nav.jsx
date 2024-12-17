@@ -19,13 +19,13 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className='flex-between w-full mb-16 pt-3'>
-      <Link href='/' className='flex gap-2 flex-center'>
+    <nav className='flex-between justify-around w-full mb-16 pt-3'>
+      <Link href='/' className='flex flex-center'>
         <Image
           src='/assets/images/logo.png'
           alt='logo'
-          width={30}
-          height={30}
+          width={50}
+          height={50}
           className='object-contain'
         />
         <p className='logo_text'>CreativeCue</p>
@@ -39,7 +39,7 @@ const Nav = () => {
               Create Post
             </Link>
 
-            <button type='button' onClick={signOut} className='outline_btn'>
+            <button type='button' onClick={signOut} className='outline_btn py-2 text-base bg-red-500 outline-0 border-0 rounded-md text-white'>
               Sign Out
             </button>
 
@@ -107,7 +107,7 @@ const Nav = () => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className='mt-5 w-full black_btn'
+                  className='mt-5 w-full black_btn text-base bg-red-500 outline-0 border-0 rounded-md text-white py-2'
                 >
                   Sign Out
                 </button>

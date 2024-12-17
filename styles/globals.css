@@ -93,8 +93,8 @@
   @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
 }
 
-.blue_gradient {
-  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+.red_gradient {
+  @apply bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent;
 }
 
 .desc {
@@ -133,15 +133,38 @@
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-red-500 tracking-wide;
+  @apply font-satoshi font-semibold text-lg text-red-500 ;
 }
 
+/* Dropdown Container */
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] 
+  flex flex-col gap-2 justify-end items-end shadow-lg transition-transform duration-300 ease-in-out;
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+  transform-origin: top right;
+  transform: scale(0.95); 
 }
 
+.dropdown.open {
+  transform: scale(1); 
+}
+
+/* Dropdown Links */
 .dropdown_link {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+  @apply text-sm font-inter text-gray-700 font-medium transition-all duration-300 ease-in-out relative;
+}
+
+.dropdown_link::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-0 h-[2px] bg-red-500 transition-all duration-300 ease-in-out;
+}
+
+.dropdown_link:hover, .dropdown_link:active  {
+  @apply text-red-500; 
+}
+
+.dropdown_link:hover::after {
+  width: 100%; 
 }
 
 /* PromptCard Component */
