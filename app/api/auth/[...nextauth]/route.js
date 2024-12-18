@@ -26,7 +26,6 @@ const handler = NextAuth({
         // check if user already exists
         const userExists = await User.findOne({ email: profile.email });
 
-        // if not, create a new document and save user in MongoDB
         if (!userExists) {
           await User.create({
             email: profile.email,
@@ -41,7 +40,11 @@ const handler = NextAuth({
         return false
       }
     },
-  }
-})
+  },
+  secret: process.env.NEXTAUTH_URL,
+  pages: {
+    signIn: '/auth/signin',
+  },
+});
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };
