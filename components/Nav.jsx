@@ -69,7 +69,7 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {status === "loading" ? (
           <Image
-            src="/assets/icons/user.gif"
+            src="/assets/icons/loader.svg"
             alt="loading-profile"
             width={37}
             height={37}
