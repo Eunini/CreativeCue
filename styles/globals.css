@@ -76,7 +76,9 @@
 .red-btn {
   @apply rounded-full bg-red-500 py-1.5 px-5 text-white outline-none transition-all hover:bg-red-600 text-center text-sm font-inter flex items-center justify-center;
 }
-
+/* .black_btn{
+  @apply rounded-full bg-grey-500 py-1.5 px-5 text-white outline-none transition-all hover:bg-grey-700 text-center text-sm font-inter flex items-center justify-center;
+} */
 .outline_btn {
   @apply rounded-full border border-red-500 bg-transparent py-1.5 px-5 text-red-500 transition-all hover:bg-red-600 hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }

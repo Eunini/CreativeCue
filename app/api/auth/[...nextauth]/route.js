@@ -1,47 +1,45 @@
-import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "utils/firebase";
 
-import User from '@models/user';
-import { connectToDB } from '@utils/database';
-
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    })
+      clientId: process.env.FIREBASE_GOOGLE_CLIENT_ID, // Firebase Web Client ID
+      clientSecret: "", // Firebase doesn't require a secret for client-side auth
+    }),
   ],
   callbacks: {
-    async session({ session }) {
-      // store the user id from MongoDB to session
-      const sessionUser = await User.findOne({ email: session.user.email });
-      session.user.id = sessionUser._id.toString();
-
+    async signIn({ account }) {
+      if (account.provider === "google") {
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        
+        if (!user) {
+          throw new Error("Google authentication failed.");
+        }
+        return true; // Allow sign-in
+      }
+      return false;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.uid = user.uid;
+        token.email = user.email;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.uid;
+      session.user.email = token.email;
       return session;
     },
-    async signIn({ account, profile, user, credentials }) {
-      try {
-        await connectToDB();
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+};
 
-        // check if user already exists
-        const userExists = await User.findOne({ email: profile.email });
-
-        // if not, create a new document and save user in MongoDB
-        if (!userExists) {
-          await User.create({
-            email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
-            image: profile.picture,
-          });
-        }
-
-        return true
-      } catch (error) {
-        console.log("Error checking if user exists: ", error.message);
-        return false
-      }
-    },
-  }
-})
-
-export { handler as GET, handler as POST }
+// Export NextAuth API routes
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };

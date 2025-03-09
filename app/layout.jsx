@@ -1,12 +1,12 @@
-import "@styles/globals.css";
+"use client"
 
+import "@styles/globals.css";
 import Nav from "@components/Nav";
-import Provider from "@components/Provider";
+import Provider from "components/Provider";
 
 export const metadata = {
   title: "CreativeCue",
   description: "Discover & Share AI Prompts",
-  images: ["/logo.png"],
   openGraph: {
     title: "CreativeCue",
     description: "Discover & Share AI Prompts",
@@ -29,20 +29,30 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => (
-  <html lang='en'>
-    <body>
-      <Provider>
-        <div className='main'>
-          <div className='gradient' />
+  <Provider>
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Discover & Share AI Prompts" />
+        <meta property="og:title" content="CreativeCue" />
+        <meta property="og:description" content="Discover & Share AI Prompts" />
+        <meta property="og:image" content="/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="CreativeCue" />
+        <meta name="twitter:description" content="Discover & Share AI Prompts" />
+        <meta name="twitter:image" content="/logo.png" />
+      </head>
+      <body>
+        <div className="main">
+          <div className="gradient" />
         </div>
-
-        <main className='app'>
+        <main className="app">
           <Nav />
           {children}
         </main>
-      </Provider>
-    </body>
-  </html>
+      </body>
+    </html>
+  </Provider>
 );
 
 export default RootLayout;
