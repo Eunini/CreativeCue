@@ -1,10 +1,8 @@
-"use client"
-
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "components/Provider";
 
-export const metadata = {
+export const metadata = {  // ✅ Allowed in a Server Component
   title: "CreativeCue",
   description: "Discover & Share AI Prompts",
   openGraph: {
@@ -33,14 +31,6 @@ const RootLayout = ({ children }) => (
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Discover & Share AI Prompts" />
-        <meta property="og:title" content="CreativeCue" />
-        <meta property="og:description" content="Discover & Share AI Prompts" />
-        <meta property="og:image" content="/logo.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="CreativeCue" />
-        <meta name="twitter:description" content="Discover & Share AI Prompts" />
-        <meta name="twitter:image" content="/logo.png" />
       </head>
       <body>
         <div className="main">
