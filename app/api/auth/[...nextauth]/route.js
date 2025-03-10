@@ -1,32 +1,20 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "utils/firebase";
 
 export const authOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.FIREBASE_GOOGLE_CLIENT_ID, // Firebase Web Client ID
-      clientSecret: "", // Firebase doesn't require a secret for client-side auth
+      clientId: process.env.GOOGLE_CLIENT_ID, // Use Google OAuth credentials
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   callbacks: {
-    async signIn({ account }) {
-      if (account.provider === "google") {
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        
-        if (!user) {
-          throw new Error("Google authentication failed.");
-        }
-        return true; // Allow sign-in
+    async jwt({ token, account, user }) {
+      if (account) {
+        token.accessToken = account.access_token;
       }
-      return false;
-    },
-    async jwt({ token, user }) {
       if (user) {
-        token.uid = user.uid;
+        token.uid = user.id;
         token.email = user.email;
       }
       return token;
@@ -40,6 +28,4 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-// Export NextAuth API routes
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export default NextAuth(authOptions);
